@@ -1,0 +1,92 @@
+.header {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 3vw;
+  pointer-events: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+  //height: 20%;
+
+  .header-logo {
+    height: 100%;
+    display: flex;
+    align-items: center;
+
+    img {
+      max-height: 125px;
+    }
+  }
+
+  .header-links {
+    gap: 30px;
+  }
+
+  .header-links a {
+    color: #fff;
+    text-decoration: none;
+    padding: 0 10px;
+    font-size: 30px;
+    position: relative; /* necessary for positioning the :after pseudo-element */
+  }
+
+  .header-links a:not(.disableLink):after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px; /* adjust this value to control the distance between the text and the underline */
+    width: 0; /* initially no underline */
+    height: 2px;
+    background-color: #fff;
+    transition: width 0.3s ease; /* smoothly transition the width to create the underline */
+  }
+
+  .header-links a:not(.disableLink):hover:after {
+    width: 100%; /* on hover, expand the width to match the text */
+  }
+
+  .header-links a:not(.disableLink).active:after {
+    width: 100%; /* if the link is active, show the full underline */
+  }
+
+  .header-links {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    a {
+      display: inline-block; /* set a specific width to the link */
+    }
+  }
+
+}
+
+.mobile-menu {
+  position: absolute;
+  left: 0;
+  top: 15%;
+  width: 100%;
+  opacity: 0;
+  pointer-events: none;
+  background-color: black;
+  transition:all 1s linear;
+}
+
+.mobile-menu.open {
+  opacity: 1;
+  pointer-events: auto;
+  height: 100%;
+
+  .header-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 50%;
+    font-size: 30px;
+  }
+}
+
+
+
